@@ -1,0 +1,107 @@
+header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 100px;
+    background: #051129;
+    z-index: 1000; /* Ensures the header stays on top */
+
+  }
+  
+  .logo {
+    position: relative;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+  }
+  
+  .navbar {
+    display: flex;
+  }
+  
+  .link {
+    display: inline-block;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: color 0.3s ease;
+    opacity: 0;
+    animation: slideTop 0.5s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
+    cursor: pointer;
+  }
+  
+  .link:hover {
+    color: #0ef;
+  }
+
+  @media screen and (max-width: 768px) {
+    header {
+      padding: 20px 50px;
+    }
+  
+    .link {
+      font-size: 16px; /* Adjusted font size for medium screens */
+      margin-left: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    header {
+      padding: 15px 20px;
+      flex-direction: column; /* Stack logo and navbar vertically */
+    }
+  
+    .logo {
+      margin-bottom: 10px; /* Adds space between logo and navbar */
+    }
+  
+    .navbar {
+      display: none; /* Hide navbar initially on small screens */
+      flex-direction: column; /* Stack links vertically when open */
+      align-items: center;
+    }
+  
+    .navbar-open {
+      display: flex; /* Show navbar when open */
+    }
+  
+    .link {
+      font-size: 14px; /* Adjusted font size for small screens */
+      margin: 10px 0; /* Adds space between links */
+    }
+  }
+
+
+
+  
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideTop {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
