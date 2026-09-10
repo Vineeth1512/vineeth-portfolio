@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Dynamic Multi-Theme Engine */
+:root,
+[data-theme="nebula"] {
+  --bg-main: #070711;
+  --bg-secondary: #0d0e1f;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #1c1538 0%, #070711 60%);
+  --card-bg: rgba(16, 14, 30, 0.65);
+  --card-border: rgba(139, 92, 246, 0.16);
+  --card-hover-border: rgba(168, 85, 247, 0.45);
+  --primary: #8b5cf6;
+  --primary-glow: rgba(139, 92, 246, 0.3);
+  --secondary: #6366f1;
+  --accent: #06b6d4;
+  --accent-secondary: #ec4899;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --badge-bg: rgba(139, 92, 246, 0.12);
+  --badge-border: rgba(139, 92, 246, 0.25);
+  --badge-text: #c4b5fd;
+  --mesh-1: rgba(139, 92, 246, 0.16);
+  --mesh-2: rgba(99, 102, 241, 0.12);
+  --mesh-3: rgba(6, 182, 212, 0.12);
+  --theme-indicator: #8b5cf6;
+}
+
+[data-theme="emerald"] {
+  --bg-main: #040c08;
+  --bg-secondary: #07170f;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #0e291b 0%, #040c08 60%);
+  --card-bg: rgba(8, 22, 16, 0.65);
+  --card-border: rgba(16, 185, 129, 0.18);
+  --card-hover-border: rgba(52, 211, 153, 0.45);
+  --primary: #10b981;
+  --primary-glow: rgba(16, 185, 129, 0.3);
+  --secondary: #059669;
+  --accent: #34d399;
+  --accent-secondary: #06b6d4;
+  --text-main: #f0fdf4;
+  --text-muted: #94a3b8;
+  --badge-bg: rgba(16, 185, 129, 0.12);
+  --badge-border: rgba(16, 185, 129, 0.25);
+  --badge-text: #6ee7b7;
+  --mesh-1: rgba(16, 185, 129, 0.16);
+  --mesh-2: rgba(5, 150, 105, 0.12);
+  --mesh-3: rgba(52, 211, 153, 0.12);
+  --theme-indicator: #10b981;
+}
+
+[data-theme="sapphire"] {
+  --bg-main: #050a14;
+  --bg-secondary: #081224;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #0c2042 0%, #050a14 60%);
+  --card-bg: rgba(8, 20, 38, 0.65);
+  --card-border: rgba(6, 182, 212, 0.18);
+  --card-hover-border: rgba(56, 189, 248, 0.45);
+  --primary: #06b6d4;
+  --primary-glow: rgba(6, 182, 212, 0.3);
+  --secondary: #2563eb;
+  --accent: #38bdf8;
+  --accent-secondary: #818cf8;
+  --text-main: #f0f9ff;
+  --text-muted: #94a3b8;
+  --badge-bg: rgba(6, 182, 212, 0.12);
+  --badge-border: rgba(6, 182, 212, 0.25);
+  --badge-text: #7dd3fc;
+  --mesh-1: rgba(6, 182, 212, 0.16);
+  --mesh-2: rgba(37, 99, 235, 0.12);
+  --mesh-3: rgba(56, 189, 248, 0.12);
+  --theme-indicator: #06b6d4;
+}
+
+[data-theme="solar"] {
+  --bg-main: #0d0806;
+  --bg-secondary: #170e09;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #2e170d 0%, #0d0806 60%);
+  --card-bg: rgba(26, 16, 11, 0.65);
+  --card-border: rgba(245, 158, 11, 0.18);
+  --card-hover-border: rgba(251, 146, 60, 0.45);
+  --primary: #f59e0b;
+  --primary-glow: rgba(245, 158, 11, 0.3);
+  --secondary: #ea580c;
+  --accent: #fbbf24;
+  --accent-secondary: #f43f5e;
+  --text-main: #fffbeb;
+  --text-muted: #a8a29e;
+  --badge-bg: rgba(245, 158, 11, 0.12);
+  --badge-border: rgba(245, 158, 11, 0.25);
+  --badge-text: #fcd34d;
+  --mesh-1: rgba(245, 158, 11, 0.16);
+  --mesh-2: rgba(234, 88, 12, 0.12);
+  --mesh-3: rgba(244, 63, 94, 0.12);
+  --theme-indicator: #f59e0b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease;
+  }
+
+  /* Custom Smooth Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-main);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+}
+
+/* Glassmorphism & UI Panels */
+.theme-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-card:hover {
+  border-color: var(--card-hover-border);
+  box-shadow: 0 12px 32px -8px var(--primary-glow);
+}
+
+.theme-nav {
+  background: rgba(var(--bg-main), 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* Text Gradients */
+.text-gradient-theme {
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 60%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dynamic Ambient Glow Mesh */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  transition: background 0.6s ease;
+}
+
+.ambient-orb-1 {
+  top: -10%;
+  left: 15%;
+  width: 550px;
+  height: 550px;
+  background: var(--mesh-1);
+  animation: float 14s ease-in-out infinite alternate;
+}
+
+.ambient-orb-2 {
+  bottom: -5%;
+  right: 10%;
+  width: 450px;
+  height: 450px;
+  background: var(--mesh-2);
+  animation: float 18s ease-in-out infinite alternate-reverse;
+}
+
+.ambient-orb-3 {
+  top: 45%;
+  right: 30%;
+  width: 380px;
+  height: 380px;
+  background: var(--mesh-3);
+  animation: float 22s ease-in-out infinite alternate;
+}
+
+/* Tech card glowing borders (used on Hero profile photo card) */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+  background-size: 400% 400%;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: gradient-xy 12s linear infinite;
+}
+
+.glow-border:hover::after {
+  opacity: 1;
+}
+
+/* Cursor hidden on desktop if custom cursor is active */
+@media (min-width: 1024px) {
+  .custom-cursor-active,
+  .custom-cursor-active a,
+  .custom-cursor-active button,
+  .custom-cursor-active input,
+  .custom-cursor-active textarea {
+    cursor: none !important;
+  }
+}
